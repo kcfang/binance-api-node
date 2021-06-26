@@ -158,12 +158,12 @@ declare module 'binance-api-node' {
 
   export interface BNBBurn {
     spotBNBBurn: boolean;
-    interestBNBBurn: boolean; 
+    interestBNBBurn: boolean;
   }
-  
+
   export interface SetBNBBurnOptions {
     spotBNBBurn: boolean;
-    interestBNBBurn: boolean; 
+    interestBNBBurn: boolean;
     recvWindow?: number;
  }
 
@@ -223,7 +223,7 @@ declare module 'binance-api-node' {
     MARGIN_UMFUTURE = 'MARGIN_UMFUTURE',
     MINING_MAIN = 'MINING_MAIN',
     MINING_UMFUTURE = 'MINING_UMFUTURE',
-    MINING_C2C = 'MINING_C2C' 
+    MINING_C2C = 'MINING_C2C'
   }
 
   export interface UniversalTransfer {
@@ -305,15 +305,15 @@ declare module 'binance-api-node' {
       useServerTime?: boolean
     }): Promise<CancelOrderResult[]>
     openOrders(options: { symbol?: string; recvWindow?: number; useServerTime?: boolean }): Promise<QueryOrderResult[]>
-    allOrders(options: { 
-       symbol?: string; 
-       orderId?: number; 
+    allOrders(options: {
+       symbol?: string;
+       orderId?: number;
        startTime?: number;
        endTime?: number;
        limit?: number;
        recvWindow?: number;
        timestamp?: number;
-       useServerTime?: boolean 
+       useServerTime?: boolean
      }): Promise<QueryOrderResult[]>
     allOrdersOCO(options: {
       timestamp: number
@@ -332,8 +332,11 @@ declare module 'binance-api-node' {
     }): Promise<TradeResult[]>
     depositAddress(options: { asset: string }): Promise<DepositAddress>
     withdraw(options: {
-      asset: string
+      coin: string
+      withdralOrderId?: string
+      network?: string
       address: string
+      addressTag?: string
       amount: number
       name?: string
     }): Promise<WithrawResponse>
@@ -402,7 +405,7 @@ declare module 'binance-api-node' {
       useServerTime?: boolean
     }): Promise<QueryOrderResult[]>
     futuresPositionRisk(options?: { recvWindow: number }): Promise<PositionRiskResult[]>
-    futuresLeverageBracket(options?: { 
+    futuresLeverageBracket(options?: {
       symbol?: string,
       recvWindow: number
     }): Promise<LeverageBracketResult[]>
@@ -605,8 +608,8 @@ declare module 'binance-api-node' {
   }
 
   export enum RateLimitInterval {
-    SECOND = 'SECOND', 
-    MINUTE = 'MINUTE', 
+    SECOND = 'SECOND',
+    MINUTE = 'MINUTE',
     DAY = 'DAY'
   }
 
@@ -619,7 +622,7 @@ declare module 'binance-api-node' {
 
   export enum ExchangeFilterType {
     EXCHANGE_MAX_NUM_ORDERS = 'EXCHANGE_MAX_NUM_ORDERS',
-    EXCHANGE_MAX_ALGO_ORDERS = 'EXCHANGE_MAX_ALGO_ORDERS' 
+    EXCHANGE_MAX_ALGO_ORDERS = 'EXCHANGE_MAX_ALGO_ORDERS'
   }
 
   export interface ExchangeFilter {
@@ -758,7 +761,7 @@ declare module 'binance-api-node' {
   export enum SideEffectType {
     NO_SIDE_EFFECT = 'NO_SIDE_EFFECT',
     MARGIN_BUY = 'MARGIN_BUY',
-    AUTO_REPAY = 'AUTO_REPAY' 
+    AUTO_REPAY = 'AUTO_REPAY'
   }
 
   export interface OrderFill {
@@ -792,7 +795,7 @@ declare module 'binance-api-node' {
     EXECUTING ='EXECUTING',
     ALL_DONE = 'ALL_DONE',
     REJECT = 'REJECT'
-  } 
+  }
 
   export enum ListStatusType {
     RESPONSE = 'RESPONSE',
@@ -802,7 +805,7 @@ declare module 'binance-api-node' {
 
   export enum OcoOrderType {
     CONTINGENCY_TYPE = 'OCO',
-  } 
+  }
 
   export interface OcoOrder {
     orderListId: number
@@ -854,7 +857,7 @@ declare module 'binance-api-node' {
     GTC = 'GTC',
     IOC = 'IOC',
     FOK = 'FOK'
-  } 
+  }
 
   export enum OrderRejectReason {
     ACCOUNT_CANNOT_SETTLE = 'ACCOUNT_CANNOT_SETTLE',
@@ -873,9 +876,9 @@ declare module 'binance-api-node' {
   export enum ExecutionType {
     NEW = 'NEW',
     CANCELED ='CANCELED',
-    REPLACED = 'REPLACED', 
+    REPLACED = 'REPLACED',
     REJECTED = 'REJECTED',
-    TRADE = 'TRADE', 
+    TRADE = 'TRADE',
     EXPIRED = 'EXPIRED'
   }
 
@@ -1262,9 +1265,9 @@ declare module 'binance-api-node' {
     bracket: number, // Notional bracket
     initialLeverage: number, // Max initial leverage for this bracket
     notionalCap: number, // Cap notional of this bracket
-    notionalFloor: number, // Notional threshold of this bracket 
+    notionalFloor: number, // Notional threshold of this bracket
     maintMarginRatio: number, // Maintenance ratio for this bracket
-    cum: 0, // Auxiliary number for quick calculation 
+    cum: 0, // Auxiliary number for quick calculation
   }
 
   export interface FuturesBalanceResult {
